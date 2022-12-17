@@ -13,11 +13,11 @@
     # port for web server access
     dev_server_port: 443
     # folder to create to deploy ssl certs
-    certandkeyfolder: "/certs/"
+    #certandkeyfolder: "/certs/"
     # name of certificate, delete if using self-signed
-    cert_location: "CERT.cer"
+    #cert_location: "CERT.cer"
     # name of key, delete if using self-signed
-    key_location: "KEY.key"
+    #key_location: "KEY.key"
     # specific image to pull to development server and assign in ansible-navigator.yml
     ansible_image: "registry.redhat.io/ansible-automation-platform23/ee-supported-rhel8:latest"
 
