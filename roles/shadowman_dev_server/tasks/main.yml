@@ -148,14 +148,23 @@
     state: present
     extra_args: --user
 
-# - name: Pull EE
-#   become: true
-#   become_user: "{{ username }}"
-#   containers.podman.podman_image:
-#     name: "{{ ansible_image }}"
-#     username: "{{ pah_user }}"
-#     password: "{{ pah_pass }}"
-#     validate_certs: false
+- name: Login to container registry
+  # become: true
+  # become_user: "{{ username }}"
+  containers.podman.podman_login:
+    registry: 44.199.142.191
+    username: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
+    tlsverify: false
+
+- name: Pull EE
+  # become: true
+  # become_user: "{{ username }}"
+  containers.podman.podman_image:
+    name: "{{ ansible_image }}"
+    username: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
+    validate_certs: false
 
 - name: Open up correct port
   ansible.posix.firewalld:
