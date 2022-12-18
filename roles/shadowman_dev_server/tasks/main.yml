@@ -6,4 +6,4 @@
 
 - name: install ansible 2.12 dev environment
   include_tasks: ansible_2_09.yml
-  when: ansible_dev_version == ansible_2_09
+  when: ansible_dev_version == "ansible_2_09"
