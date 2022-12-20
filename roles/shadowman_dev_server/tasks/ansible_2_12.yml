@@ -137,6 +137,7 @@
     name:
       - podman
       - git
+      - firewalld
     state: present
 
 - name: Install ansible-navigator
@@ -165,18 +166,18 @@
 #     password: "{{ pah_pass }}"
 #     validate_certs: false
 
-# - name: Open up correct port
-#   ansible.posix.firewalld:
-#     port: "{{ dev_server_port }}/tcp"
-#     permanent: true
-#     state: enabled
-#   notify: Restart_firewalld
+- name: Open up correct port
+  ansible.posix.firewalld:
+    port: "{{ dev_server_port }}/tcp"
+    permanent: true
+    state: enabled
+  notify: Restart_firewalld
 
-- name: open up correct port
-  ansible.builtin.command: firewall-cmd --permanent --add-port={{ dev_server_port}}/tcp
+# - name: open up correct port
+#   ansible.builtin.command: firewall-cmd --permanent --add-port={{ dev_server_port}}/tcp
 
-- name: open up correct port
-  ansible.builtin.command: firewall-cmd --reload    
+# - name: open up correct port
+#   ansible.builtin.command: firewall-cmd --reload    
 
 - name: Check if user is lingering
   ansible.builtin.stat:
